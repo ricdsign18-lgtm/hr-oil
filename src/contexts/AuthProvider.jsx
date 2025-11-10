@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { useState, useEffect } from "react";
 import supabase from "../api/supaBase";
-
+import bcrypt from "bcryptjs";
 export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,7 +39,8 @@ export const AuthProvider = ({ children }) => {
         return;
       }
 
-      if (data.password !== credentials.password) {
+      const isMatch = await bcrypt.compare(credentials.password, data.password);
+      if (!isMatch) {
         alert("Contraseña incorrecta");
         return;
       }
@@ -53,46 +54,6 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error("Error en login:", error);
       alert("Error al iniciar sesión");
-    }
-  };
-
-  const registerUser = async (newUserData) => {
-    try {
-      // 1. Verificar si el usuario ya existe
-      const { data: existingUser, error: fetchError } = await supabase
-        .from("users")
-        .select("username")
-        .eq("username", newUserData.username)
-        .single();
-
-      if (fetchError && fetchError.code !== "PGRST116") {
-        // PGRST116: 'exact-one' rows expected, but 0 were found
-        throw fetchError;
-      }
-
-      if (existingUser) {
-        return {
-          success: false,
-          error: "El nombre de usuario ya está en uso.",
-        };
-      }
-
-      // 2. Si no existe, insertar el nuevo usuario
-      const { error: insertError } = await supabase
-        .from("users")
-        .insert([newUserData]);
-
-      if (insertError) {
-        throw insertError;
-      }
-
-      return { success: true };
-    } catch (error) {
-      console.error("Error al registrar usuario:", error);
-      return {
-        success: false,
-        error: error.message || "Ocurrió un error inesperado.",
-      };
     }
   };
 
@@ -224,7 +185,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         userData,
         handleLogin,
-        registerUser, // <-- Exportamos la nueva función
+
         loading,
         hasPermission, // versión async - para uso con useEffect
         hasPermissionSync, // versión síncrona - para uso inmediato
