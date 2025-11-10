@@ -706,9 +706,11 @@ const CalculadoraPagos = ({
                     </div>
                   </div>
 
-                  <div className="dias-trabajados">{diasTrabajados}</div>
+                  <div className="dias-trabajados" data-label="Días Asist.">
+                    {diasTrabajados}
+                  </div>
 
-                  <div className="horas-extra-input">
+                  <div className="horas-extra-input" data-label="H. Extra D.">
                     <input
                       type="number"
                       value={horasExtrasEmpleado.diurna}
@@ -725,37 +727,36 @@ const CalculadoraPagos = ({
                     />
                   </div>
 
-                  <div className="horas-extra-input">
-                    <input
-                      type="number"
-                      value={horasExtrasEmpleado.nocturna}
-                      onChange={(e) =>
-                        handleHorasExtrasChange(
-                          empleado.id,
-                          "nocturna",
-                          e.target.value
-                        )
-                      }
-                      placeholder="0"
-                      min="0"
-                      step="0.5"
-                    />
-                  </div>
-
-                  <div className="deduccion-manual-input">
-                    <input
-                      type="number"
-                      value={deduccionManual}
-                      onChange={(e) =>
-                        handleDeduccionManualChange(empleado.id, e.target.value)
-                      }
-                      placeholder="0.00"
-                      step="0.01"
-                      min="0"
-                    />
-                  </div>
-
-                  <div className="banco-input">
+                                    <div className="horas-extra-input" data-label="H. Extra N.">
+                                      <input
+                                        type="number"
+                                        value={horasExtrasEmpleado.nocturna}
+                                        onChange={(e) =>
+                                          handleHorasExtrasChange(
+                                            empleado.id,
+                                            "nocturna",
+                                            e.target.value
+                                          )
+                                        }
+                                        placeholder="0" 
+                                        min="0"
+                                        step="0.5"
+                                      />
+                                    </div>
+                  
+                                    <div className="deduccion-manual-input" data-label="Ded. Manual ($)">
+                                      <input
+                                        type="number"
+                                        value={deduccionManual}
+                                        onChange={(e) =>
+                                          handleDeduccionManualChange(empleado.id, e.target.value)
+                                        }
+                                        placeholder="0.00"
+                                        step="0.01"
+                                        min="0"
+                                      />
+                                    </div>
+                  <div className="banco-input" data-label="Banco">
                     <select
                       value={bancoPago}
                       onChange={(e) =>
@@ -776,7 +777,7 @@ const CalculadoraPagos = ({
                     </select>
                   </div>
 
-                  <div className="observaciones-input">
+                  <div className="observaciones-input" data-label="Observaciones">
                     <input
                       type="text"
                       value={observacion}
@@ -887,7 +888,7 @@ const CalculadoraPagos = ({
                     </div>
                   </div>
 
-                  <div className="tipo-nomina">
+                  <div className="tipo-nomina" data-label="Tipo Nómina">
                     <span
                       className={`nomina-badge ${empleado.tipoNomina.replace(
                         /\s+/g,
@@ -906,19 +907,19 @@ const CalculadoraPagos = ({
                     )}
                   </div>
 
-                  <div className="mitad-pago-input">
+                  <div className="mitad-pago-input" data-label="Quincena del Mes">
                     <select
                       value={mitadPago}
                       onChange={(e) =>
                         handleMitadPagoChange(empleado.id, e.target.value)
                       }
                     >
-                      <option value="primera">Primera Mitad</option>
-                      <option value="segunda">Segunda Mitad</option>
+                      <option value="primera">Primera Quincena del Mes</option>
+                      <option value="segunda">Segunda Quincena del Mes</option>
                     </select>
                   </div>
 
-                  <div className="dias-pago-input">
+                  <div className="dias-pago-input" data-label="Días a Pagar">
                     <input
                       type="number"
                       value={diasPago}
@@ -930,7 +931,7 @@ const CalculadoraPagos = ({
                     />
                   </div>
 
-                  <div className="horas-extra-input">
+                  <div className="horas-extra-input" data-label="H. Extra D.">
                     <input
                       type="number"
                       value={horasExtrasEmpleado.diurna}
@@ -947,7 +948,7 @@ const CalculadoraPagos = ({
                     />
                   </div>
 
-                  <div className="horas-extra-input">
+                  <div className="horas-extra-input" data-label="H. Extra N.">
                     <input
                       type="number"
                       value={horasExtrasEmpleado.nocturna}
@@ -964,7 +965,7 @@ const CalculadoraPagos = ({
                     />
                   </div>
 
-                  <div className="deduccion-manual-input">
+                  <div className="deduccion-manual-input" data-label="Ded. Manual ($)">
                     <input
                       type="number"
                       value={deduccionManual}
@@ -977,7 +978,7 @@ const CalculadoraPagos = ({
                     />
                   </div>
 
-                  <div className="banco-input">
+                  <div className="banco-input" data-label="Banco">
                     <select
                       value={bancoPago}
                       onChange={(e) =>
@@ -995,7 +996,7 @@ const CalculadoraPagos = ({
                     </select>
                   </div>
 
-                  <div className="observaciones-input">
+                  <div className="observaciones-input" data-label="Observaciones">
                     <input
                       type="text"
                       value={observacion}

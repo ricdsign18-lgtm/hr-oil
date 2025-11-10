@@ -100,7 +100,7 @@ const ValuacionResumenCard = ({ valuacion, mainCurrency, budgetTotalUSD, cumulat
   return (
     <div className="valuacion-resumen-card">
       <div className="card-header">
-        <h4>Valuación #{numero_valuacion}</h4>
+        <h4>{numero_valuacion}</h4>
         <div className="header-details">
           <span className="periodo">
             {new Date(periodo_inicio).toLocaleDateString()} - {new Date(periodo_fin).toLocaleDateString()}

@@ -10,6 +10,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   min-width: 220px;
+  max-width: 280px; /* Añadido para consistencia */
   display: flex;
   flex-direction: column;
 }
@@ -64,4 +65,30 @@
 
 .logout-button:hover {
   background-color: #ffebee;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-profile-panel {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    border-radius: 16px 16px 0 0; /* Bordes redondeados en la parte superior */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    animation: slide-up 0.3s ease-out;
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
 }

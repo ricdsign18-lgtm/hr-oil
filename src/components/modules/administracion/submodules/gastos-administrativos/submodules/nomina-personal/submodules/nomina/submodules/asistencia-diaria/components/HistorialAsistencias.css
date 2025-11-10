@@ -209,3 +209,81 @@
     align-items: flex-start;
   }
 }
+
+@media (max-width: 480px) {
+  .historial-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .historial-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .filter-controls input {
+    width: 100%;
+  }
+
+  .historial-item {
+    padding: 1rem;
+  }
+
+  .historial-date {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .date-main {
+    font-size: 1rem;
+  }
+
+  .btn-view {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .historial-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat .number {
+    font-size: 1.25rem;
+  }
+
+  .stat .label {
+    font-size: 0.75rem;
+  }
+
+  .employees-list-detailed {
+    grid-template-columns: 1fr;
+  }
+
+  .employee-detail {
+    padding: 0.5rem;
+  }
+
+  .empty-historial {
+    padding: 2rem 1rem;
+  }
+
+  .empty-icon {
+    font-size: 2.5rem;
+  }
+
+  .empty-historial h4 {
+    font-size: 1.1rem;
+  }
+
+  .empty-historial p {
+    font-size: 0.85rem;
+  }
+}

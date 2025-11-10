@@ -64,3 +64,20 @@
   border-radius: 4px;
   font-size: 1rem;
 }
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .user-register-form {
+    gap: 0.75rem; /* Smaller gap for form elements on mobile */
+  }
+
+  .form-group {
+    gap: 0.4rem; /* Smaller gap within form groups */
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 8px; /* Slightly smaller padding for inputs on mobile */
+    font-size: 0.9rem; /* Adjust font size */
+  }
+}

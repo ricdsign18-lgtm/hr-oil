@@ -147,6 +147,49 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 480px) {
+  .asistencia-controls {
+    padding: 1rem;
+  }
+
+  .date-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .date-selector input {
+    width: 100%;
+  }
+
+  .view-toggle {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .view-toggle button {
+    flex: 1 1 auto;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .module-content {
+    padding: 1rem;
+  }
+}
 /* Agregar en AsistenciaDiariaMain.css */
 .no-employees-warning {
   text-align: center;

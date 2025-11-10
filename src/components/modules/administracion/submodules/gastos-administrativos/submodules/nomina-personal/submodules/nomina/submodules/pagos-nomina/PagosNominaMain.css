@@ -72,7 +72,7 @@
 .module-content {
   background: var(--surface-color);
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: var(--shadow);
   min-height: 400px;
 }

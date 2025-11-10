@@ -195,7 +195,7 @@ const ResumenMain = () => {
         highlight: true,
       },
       {
-        label: "Subtotal Presupuesto (con IVA)",
+        label: "Subtotal Presupuesto",
         value: formatCurrency(convertFromUSD(subtotalConIVA_USD), mainCurrency),
         equivalentValue: generarConversiones(subtotalConIVA_USD),
       },
