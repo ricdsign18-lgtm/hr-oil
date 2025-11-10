@@ -5,11 +5,14 @@ import { useState, useEffect, useRef } from "react";
 import "./UserRegister.css";
 import { UserIcon, OutIcon, ArrowDown } from "../../../assets/icons/Icons";
 import { UserRegisterPanel } from "./UserRegisterPanel";
+import supabase from "../../../api/supaBase";
+import bcrypt from "bcryptjs";
 
 export const UserRegister = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const { registerUser, userData: currentUser, logout } = useAuth();
+  const { userData: currentUser, logout } = useAuth();
+  //TODO: Aqui empieza el registro de usuario
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -50,14 +53,17 @@ export const UserRegister = () => {
       alert("Por favor, completa el nombre de usuario y la contraseña.");
       return;
     }
+    const passwordHashed = await bcrypt.hash(userData.password, 12);
+    console.log("Hashed password:", passwordHashed);
+    const { error } = await supabase.from("users").insert({
+      username: userData.username,
+      password: passwordHashed,
+      role: userData.role,
+    });
 
-    const result = await registerUser(userData);
-
-    if (result.success) {
-      alert(`✅ Usuario "${userData.username}" creado exitosamente.`);
-      handleCloseModal();
-    } else {
-      alert(`❌ Error al crear el usuario: ${result.error}`);
+    if (error) {
+      alert("Error");
+      return;
     }
   };
 
